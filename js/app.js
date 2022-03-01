@@ -11,8 +11,8 @@ const getPhoneInfo = () => {
 }
 
 const displayPhone = (phones) => {
-    console.log(phones[1])
-    for (const phone of phones) {
+    const first20Phones = phones.slice(0, 20);
+    for (const phone of first20Phones) {
         console.log(phone)
         const div = document.createElement('div')
         div.className = 'col-lg-4 col-md-6'
@@ -20,8 +20,8 @@ const displayPhone = (phones) => {
        <div class="card" style="width: 18rem;">
        <img src="${phone.image}" class="card-img-top" alt="...">
        <div class="card-body">
-         <h5 class="card-title">Card title</h5>
-         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+         <h5 class="card-title">'${phone.phone_name}'</h5>
+         <p class="card-text">Hey! are you interested  more info about this phone, plz click the 'Details' button.</p>
          <button onclick="phoneDetails('${phone.slug}')" class="btn btn-primary">Details</button>
        </div>
      </div>
