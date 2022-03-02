@@ -10,5 +10,12 @@
 
 /* error color */
 #error{
+    margin-top: 5%;
     color: red;
+    display: none;
+}
+#error2{
+    margin-top: 5%;
+    color: red;
+    display: none;
 }

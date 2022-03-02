@@ -1,19 +1,20 @@
 
-
+// search button works start here
 const getPhoneInfo = () => {
     const input = document.getElementById('input-value');
     const inputValue = input.value;
     input.value = '';
-    const error = document.getElementById('error')
+    document.getElementById("details-info").innerHTML = '';
+
     if (inputValue === '') {
-        error.innerText = 'plz write a phone  name'
+        document.getElementById('error2').style.display = 'block'
+        document.getElementById('search-results').innerHTML = '';
     }
 
     else {
         fetch(`https://openapi.programming-hero.com/api/phones?search=${inputValue}`)
             .then(res => res.json())
             .then(data => displayPhone(data.data))
-        error.innerHTML = '';
         input.value = '';
     }
 }
@@ -24,14 +25,19 @@ const displayPhone = (phones) => {
     searchResults.textContent = '';
     const checking = phones.length;
     if (checking === 0) {
-        alert('plz write valid phone name')
+        document.getElementById('search-results').innerHTML = '';
+        document.getElementById('error').style.display = 'block'
+        document.getElementById('error2').style.display = 'none'
     }
-    const first20Phones = phones.slice(0, 20);
-    for (const phone of first20Phones) {
-        console.log(phone)
-        const div = document.createElement('div')
-        div.className = 'col-lg-4 col-sm-12 mx-auto col-12 g-4 shadow'
-        div.innerHTML = `
+    else {
+        document.getElementById('error').style.display = 'none'
+        document.getElementById('error2').style.display = 'none'
+        const first20Phones = phones.slice(0, 20);
+        for (const phone of first20Phones) {
+            console.log(phone)
+            const div = document.createElement('div')
+            div.className = 'col-lg-4 col-sm-12 mx-auto col-12 g-4 shadow'
+            div.innerHTML = `
        <div class="card" style="width: 18rem;">
        <img src="${phone.image}" class="card-img-top p-4" alt="...">
        <div class="card-body">
@@ -41,7 +47,8 @@ const displayPhone = (phones) => {
        </div>
      </div>
        `
-        searchResults.appendChild(div)
+            searchResults.appendChild(div)
+        }
     }
 }
 
@@ -72,6 +79,7 @@ const displayDetailsInfo = (phoneInfo) => {
          <p class="card-text">Model Name:${phoneInfo.name}</p>
          <p class="card-text">Storage: ${phoneInfo.mainFeatures.storage}</p>
          <p class="card-text">Display Size: ${phoneInfo.mainFeatures.displaySize}</p>
+         <p class="card-text">Chipset: ${phoneInfo.mainFeatures.chipSet}</p>
          <p class="card-text">Slug: ${phoneInfo.slug}</p>
          <span class="card-text my-2" >Sensors: ${phoneInfo.mainFeatures.sensors
         }</span>
