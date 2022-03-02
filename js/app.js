@@ -36,9 +36,9 @@ const displayPhone = (phones) => {
         for (const phone of first20Phones) {
             console.log(phone)
             const div = document.createElement('div')
-            div.className = 'col-lg-4 col-sm-12 mx-auto col-12 g-4 shadow'
+            div.className = 'col-lg-4 col-sm-12 col-12 mx-auto g-4 shadow'
             div.innerHTML = `
-       <div class="card" style="width: 18rem;">
+       <div class="card mx-auto m-4" style="width: 18rem;">
        <img src="${phone.image}" class="card-img-top p-4" alt="...">
        <div class="card-body">
          <h5 class="card-title">${phone.brand}</h5>
@@ -68,9 +68,9 @@ const displayDetailsInfo = (phoneInfo) => {
     const showDetailsInfo = document.getElementById("details-info")
     showDetailsInfo.textContent = '';
     const div = document.createElement('div')
-    div.className = 'col-lg-4 col-sm-12 mx-auto col-12 g-4 shadow'
+    div.className = 'col-lg-4 col-sm-12 col-12 mx-auto g-4 shadow'
     div.innerHTML = `
-       <div class="card" style="width: 18rem;">
+       <div class="card mx-auto m-4" style="width: 18rem;">
        <img src="${phoneInfo.image}" class="card-img-top p-4" alt="..."> 
        <div class="card-body text-center">
          <h5 class="card-title">Brand Name: ${phoneInfo.brand}</h5>
