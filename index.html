@@ -15,7 +15,7 @@
 
 </head>
 
-<body>
+<body style="background-color:#cfbb80">
     <h1 class="text-center">Anik's Phone Info</h1>
     <div class="container">
         <div class="d-flex">
@@ -23,11 +23,16 @@
             <button id="search-btn" onclick="getPhoneInfo()" class="btn btn-outline-success"
                 type="submit">Search</button>
         </div>
+        <div id="details-info" class="row">
+
+        </div>
         <div id="main" class="row">
+            <h2 id="error" class="text-center"></h2>
 
         </div>
     </div>
 
+    <!-- bootstrap js bundle -->
 
     <!-- js file here -->
     <script src="./js/app.js"></script>
