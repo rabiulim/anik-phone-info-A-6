@@ -1,3 +1,14 @@
+
+/* background color */
+.bg-color{
+    background-color: gainsboro;
+}
+/* header color */
+.header{
+    color: orangered ;
+}
+
+/* error color */
 #error{
     color: red;
 }

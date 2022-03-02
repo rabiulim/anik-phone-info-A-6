@@ -1,5 +1,4 @@
 
-// const main = document.getElementById('main')
 
 const getPhoneInfo = () => {
     const input = document.getElementById('input-value');
@@ -20,7 +19,7 @@ const getPhoneInfo = () => {
 }
 
 const displayPhone = (phones) => {
-    const searchResults = document.getElementById('main');
+    const searchResults = document.getElementById('search-results');
     console.log(phones.length)
     searchResults.textContent = '';
     const checking = phones.length;
@@ -46,6 +45,8 @@ const displayPhone = (phones) => {
     }
 }
 
+// details button works start here
+
 const phoneDetails = (detailsPhoneCode) => {
     const url = `https://openapi.programming-hero.com/api/phone/${detailsPhoneCode}`
 
@@ -60,23 +61,24 @@ const displayDetailsInfo = (phoneInfo) => {
     const showDetailsInfo = document.getElementById("details-info")
     showDetailsInfo.textContent = '';
     const div = document.createElement('div')
-    div.className = 'text-center col-lg-6'
+    div.className = 'col-lg-4 col-sm-12 mx-auto col-12 g-4 shadow'
     div.innerHTML = `
-    <div>
-    <div>
-      <img src="${phoneInfo.image}" class="img-fluid      rounded-start" width="50%" height="75%">
-    </div>
-    <div>
-<h4>Brand: ${phoneInfo.brand}</h4>
-<h4>Name: ${phoneInfo.name}</h4>
-<h4>Release Date: ${phoneInfo.releaseDate}</h4>
-<h4>Storage: ${phoneInfo.mainFeatures.storage}</h4>
-<h4>Display Size: ${phoneInfo.mainFeatures.displaySize}</h4>
-
-</div>
-  </div>
- 
-    `
+       <div class="card" style="width: 18rem;">
+       <img src="${phoneInfo.image}" class="card-img-top p-4" alt="..."> 
+       <div class="card-body text-center">
+         <h5 class="card-title">Brand Name: ${phoneInfo.brand}</h5>
+         <p class="fw-bold">Released Date: ${phoneInfo?.releaseDate || "No Release Date Found"
+        }</p>  
+         <p class="card-text">Model Name:${phoneInfo.name}</p>
+         <p class="card-text">Storage: ${phoneInfo.mainFeatures.storage}</p>
+         <p class="card-text">Display Size: ${phoneInfo.mainFeatures.displaySize}</p>
+         <p class="card-text">Slug: ${phoneInfo.slug}</p>
+         <span class="card-text my-2" >Sensors: ${phoneInfo.mainFeatures.sensors
+        }</span>
+         <p class="card-text">Others info: WLAN; ${phoneInfo?.others?.WLAN || "Info will provide soon"},Bluetooth;${phoneInfo?.others?.Bluetooth || "Info will provide soon"} </p>
+       </div>
+     </div>
+     `
     showDetailsInfo.appendChild(div)
 }
 
